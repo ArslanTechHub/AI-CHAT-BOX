@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+
+  body {
+    @apply bg-custom-bg text-custom-text font-sans;
+  }
+
+  a {
+    @apply no-underline text-inherit;
+  }
+}
