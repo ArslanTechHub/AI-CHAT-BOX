@@ -18,6 +18,15 @@ const app = express();
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
+app.use((req, res, next) => {//https://yanfeng-client.onrender.com
+    res.setHeader('Access-Control-Allow-Origin', 'https://ai-chat-box-steel.vercel.app/');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
+
+
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -166,14 +175,12 @@ app.use((err, req, res, next) => {
 //   res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 // });
 
-// app.listen(port, () => {
-//   connect();
-//   console.log("Server running on 3000");
-// });
-
-
-// Start the server
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
   connect();
-  console.log(`Server running on port ${port}`);
+  console.log("Server running on 3000");
 });
+
+
+
+
+
