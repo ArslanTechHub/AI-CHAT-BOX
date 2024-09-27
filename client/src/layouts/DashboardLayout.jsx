@@ -17,20 +17,17 @@ const DashboardLayout = () => {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-screen">
       {/* ChatList with fixed width */}
-      <div className="w-72">
+      <div className="lg:w-72">
         <ChatList />
       </div>
       {/* DashboardPage covering the remaining space */}
-      <div className="flex-1">
-        <Outlet />
+      <div className="flex-1 lg:flex-1 ">
+        <Outlet  />
       </div>
     </div>
   );
 };
 
 export default DashboardLayout;
-
-
-

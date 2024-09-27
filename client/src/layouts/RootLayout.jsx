@@ -19,7 +19,7 @@ const RootLayout = () => {
       <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
         <QueryClientProvider client={queryClient}>
           <header className="flex items-center justify-between ">
-            <Link className="flex items-center px-4 py-6 ml-12" to="/">
+            <Link className="flex items-center px-4 py-6 ml-2" to="/">
               <img className="w-8 h-8" src="/logo.png" alt="" />
               <span className="ml-2 font-bold ">AI CHAT BOX</span>
             </Link>
