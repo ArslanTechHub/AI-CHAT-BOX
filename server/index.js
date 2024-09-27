@@ -7,8 +7,7 @@ import mongoose from "mongoose";
 import Chat from "./models/chat.js";
 import UserChats from "./models/userChats.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
-import dotenv from 'dotenv';
-
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -18,14 +17,17 @@ const app = express();
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
-app.use((req, res, next) => {//https://yanfeng-client.onrender.com
-    res.setHeader('Access-Control-Allow-Origin', 'https://ai-chat-box-steel.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
-
+app.use((req, res, next) => {
+  //https://yanfeng-client.onrender.com
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://ai-chat-box-steel.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 app.use(
   cors({
@@ -56,7 +58,7 @@ app.get("/api/upload", (req, res) => {
   res.send(result);
 });
 
-app.post("/api/chats", ClerkExpressRequireAuth(), async (req, res) => {
+app.post("/api/chats",  async (req, res) => {
   const userId = req.auth.userId;
   const { text } = req.body;
 
@@ -179,8 +181,3 @@ app.listen(port, () => {
   connect();
   console.log("Server running on 3000");
 });
-
-
-
-
-
