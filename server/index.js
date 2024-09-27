@@ -102,7 +102,7 @@ app.post("/api/chats",  async (req, res) => {
       );
        // Set a cookie after chat creation
     res.cookie("__client_uat", userId, {
-      domain: ".vercel.app",  // Make sure the domain matches your frontend domain
+      domain: "ai-chat-box-steel.vercel.app",  // Make sure the domain matches your frontend domain
       secure: true,           // Ensure it's only used over HTTPS
       httpOnly: true,         // Prevent JavaScript access
       sameSite: "None",       // Needed for cross-origin requests
