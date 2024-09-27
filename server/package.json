@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "scripts": {
+ "scripts": {
     "start": "nodemon --env-file .env index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'No build step required'"
   },
   "keywords": [],
   "author": "",
