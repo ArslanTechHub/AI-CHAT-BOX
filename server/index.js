@@ -29,12 +29,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors({
-    origin: "https://ai-chat-box-steel.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: 'https://ai-chat-box-steel.vercel.app', // Only allow your production frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify required HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+  credentials: true, // Allow cookies if necessary for authentication
+}));
 
 app.use(express.json());
 
@@ -101,12 +101,12 @@ app.post("/api/chats",  async (req, res) => {
         }
       );
        // Set a cookie after chat creation
-    res.cookie("__client_uat", userId, {
-      domain: ".vercel.app",  // Make sure the domain matches your frontend domain
-      secure: true,           // Ensure it's only used over HTTPS
-      httpOnly: true,         // Prevent JavaScript access
-      sameSite: "None",       // Needed for cross-origin requests
-    });
+    // res.cookie("__client_uat", userId, {
+    //   domain: ".vercel.app",  // Make sure the domain matches your frontend domain
+    //   secure: true,           // Ensure it's only used over HTTPS
+    //   httpOnly: true,         // Prevent JavaScript access
+    //   sameSite: "None",       // Needed for cross-origin requests
+    // });
 
       res.status(201).send(newChat._id);
     }
