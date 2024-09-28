@@ -8,14 +8,15 @@ import Chat from "./models/chat.js";
 import UserChats from "./models/userChats.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 import dotenv from "dotenv";
-import { requireAuth } from '@clerk/clerk-sdk-node';
 
 dotenv.config();
 
 const port = process.env.PORT || 3000;
 const app = express();
-
-app.use(requireAuth);
+app.use((req, res, next) => {
+  console.log("hello"+req.auth); // Log the auth object to verify if Clerk middleware is working
+  next();
+});
 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
@@ -33,7 +34,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: 'http://localhost:8000', // Only allow your production frontend
+  origin: 'https://ai-chat-box-steel.vercel.ap', // Only allow your production frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify required HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
   credentials: true, // Allow cookies if necessary for authentication
@@ -175,10 +176,10 @@ app.put("/api/chats/:id", ClerkExpressRequireAuth(), async (req, res) => {
   }
 });
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(401).send("Unauthenticated!");
-});
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(401).send("Unauthenticated!");
+// });
 
 // PRODUCTION
 // app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -186,6 +187,13 @@ app.use((err, req, res, next) => {
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 // });
+app.get("/test", ClerkExpressRequireAuth(), (req, res) => {
+
+  const userId = req.auth.userId;
+  console.log(userId);
+   res.send("Testing Clerk authentication");
+});
+
 
 app.listen(port, () => {
   connect();
