@@ -193,6 +193,9 @@ app.get("/test", ClerkExpressRequireAuth(), (req, res) => {
   console.log(userId);
    res.send("Testing Clerk authentication");
 });
+app.get("/check", (req, res) => {
+   res.send("Testing Zeeshan authentication");
+});
 
 
 app.listen(port, () => {
