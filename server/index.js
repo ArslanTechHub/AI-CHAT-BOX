@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: 'https://ai-chat-box-steel.vercel.ap', // Only allow your production frontend
+  origin: 'https://ai-chat-box-steel.vercel.app', // Only allow your production frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify required HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
   credentials: true, // Allow cookies if necessary for authentication
