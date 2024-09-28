@@ -8,11 +8,14 @@ import Chat from "./models/chat.js";
 import UserChats from "./models/userChats.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 import dotenv from "dotenv";
+import { requireAuth } from '@clerk/clerk-sdk-node';
 
 dotenv.config();
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+app.use(requireAuth);
 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
@@ -30,7 +33,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: 'https://ai-chat-box-steel.vercel.app', // Only allow your production frontend
+  origin: 'http://localhost:8000', // Only allow your production frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify required HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
   credentials: true, // Allow cookies if necessary for authentication
