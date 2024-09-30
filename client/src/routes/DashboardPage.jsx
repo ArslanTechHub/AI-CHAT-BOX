@@ -160,7 +160,7 @@ const DashboardPage = () => {
     <input
       type="text"
       name="text"
-      placeholder="Ask Me Anything......."
+      placeholder="Ask Me Anything......"
       className="w-full px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 bg-[#2c2937] text-[#ececec] rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-[#217bfe] text-sm sm:text-base"
     />
     <button
